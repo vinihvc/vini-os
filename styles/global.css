@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+::selection {
+	@apply bg-primary text-background;
+}
+
+html {
+	@apply scroll-smooth;
+}
+
+body {
+	@apply bg-background h-dvh flex flex-col text-foreground font-sans antialiased overflow-hidden;
+}
+
+main {
+	@apply flex flex-col flex-1;
+}
+
+@theme {
+	--font-sans: "Geist", sans-serif;
+
+	--color-background: oklch(1 0 0);
+	--color-foreground: oklch(0.2824 0.0262 254.4);
+
+	--color-muted: oklch(0.9572 0.0101 240.01);
+	--color-muted-foreground: oklch(0.5048 0.0197 248.99);
+
+	--color-popover: oklch(1 0 0);
+	--color-popover-foreground: oklch(0.2824 0.0262 254.4);
+
+	--color-border: oklch(0.9068 0.0118 238.34);
+
+	--color-input: oklch(0.9068 0.0118 238.34);
+
+	--color-card: oklch(1 0 0);
+	--color-card-foreground: oklch(0.2824 0.0262 254.4);
+
+	--color-primary: oklch(0.2824 0.0262 254.4);
+	--color-primary-foreground: oklch(0.9811 0.0101 240.01);
+
+	--color-secondary: oklch(0.9572 0.0101 240.01);
+	--color-secondary-foreground: oklch(0.2824 0.0262 254.4);
+
+	--color-accent: oklch(62.34% 0.1877 259.99);
+	--color-accent-foreground: oklch(100% 0 259.99);
+
+	--color-destructive: oklch(0.6242 0.2729 29.234);
+	--color-destructive-foreground: oklch(0.9811 0.0101 240.01);
+
+	--color-ring: oklch(0.6987 0.0183 246.06);
+}
