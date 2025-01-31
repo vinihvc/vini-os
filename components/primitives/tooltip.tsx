@@ -12,6 +12,7 @@ const Tooltip = React.forwardRef<
 
   return (
     <TooltipPrimitive.Provider delayDuration={delayDuration}>
+      {/* @ts-ignore */}
       <TooltipPrimitive.Root ref={ref} {...props} />
     </TooltipPrimitive.Provider>
   )
