@@ -1,45 +1,67 @@
+import { TabsContent } from '@/components/primitives/tabs'
 import { ToggleGroupItem } from '@/components/primitives/toggle-group'
-import { useWallpaper } from '@/store/wallpaper'
+import { Upload } from '@/components/primitives/upload'
+import { setWallpaper } from '@/store/wallpaper'
 import { ToggleGroup } from '@radix-ui/react-toggle-group'
 
-export const WallpaperTab = () => {
-  const [, setWallpaper] = useWallpaper()
-
+export const WallpaperSettings = () => {
   return (
-    <ToggleGroup className="grid gap-2" type="single">
-      <div className="flex items-center justify-between">
-        <div className="font-semibold text-sm">Solid</div>
+    <TabsContent value="wallpaper" asChild>
+      <ToggleGroup className="flex flex-col gap-4" type="single">
+        <div className="grid gap-2">
+          <div className="flex items-center justify-between">
+            <div className="font-medium text-sm">Solid</div>
+          </div>
 
-        {/* <button type="button" className="text-muted-foreground text-xs">
-          Show all (11)
-        </button> */}
-      </div>
+          <div className="grid grid-cols-4 gap-2">
+            <ToggleGroupItem
+              value="blue"
+              className="h-20 w-full cursor-pointer rounded-xl border bg-blue-700"
+              onClick={() =>
+                setWallpaper({ type: 'solid', value: 'bg-blue-700' })
+              }
+            />
 
-      <div className="grid grid-cols-4 gap-2">
-        <ToggleGroupItem
-          value="blue"
-          className="h-20 w-full cursor-pointer rounded-lg bg-blue-700 data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-1 data-[state=on]:ring-offset-background"
-          onClick={() => setWallpaper({ type: 'solid', value: '#1347E6' })}
-        />
+            <ToggleGroupItem
+              value="indigo"
+              className="h-20 w-full cursor-pointer rounded-xl border bg-indigo-700"
+              onClick={() =>
+                setWallpaper({ type: 'solid', value: 'bg-indigo-700' })
+              }
+            />
 
-        <ToggleGroupItem
-          value="indigo"
-          className="h-20 w-full cursor-pointer rounded-lg bg-indigo-700 data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-1 data-[state=on]:ring-offset-background"
-          onClick={() => setWallpaper({ type: 'solid', value: '#432DD7' })}
-        />
+            <ToggleGroupItem
+              value="teal"
+              className="h-20 w-full cursor-pointer rounded-xl border bg-teal-700"
+              onClick={() =>
+                setWallpaper({ type: 'solid', value: 'bg-teal-700' })
+              }
+            />
 
-        <ToggleGroupItem
-          value="teal"
-          className="h-20 w-full cursor-pointer rounded-lg bg-teal-700 data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-1 data-[state=on]:ring-offset-background"
-          onClick={() => setWallpaper({ type: 'solid', value: '#01786F' })}
-        />
+            <ToggleGroupItem
+              value="rose"
+              className="h-20 w-full cursor-pointer rounded-xl border bg-rose-700"
+              onClick={() =>
+                setWallpaper({ type: 'solid', value: 'bg-rose-700' })
+              }
+            />
+          </div>
+        </div>
 
-        <ToggleGroupItem
-          value="rose"
-          className="h-20 w-full cursor-pointer rounded-lg bg-rose-700 data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-1 data-[state=on]:ring-offset-background"
-          onClick={() => setWallpaper({ type: 'solid', value: '#C70036' })}
-        />
-      </div>
-    </ToggleGroup>
+        <div className="grid gap-2">
+          <div className="flex items-center justify-between">
+            <div className="font-medium text-sm">Upload</div>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2">
+            <Upload
+              onUpload={(result) =>
+                setWallpaper({ type: 'image', value: result })
+              }
+            />
+          </div>
+        </div>
+      </ToggleGroup>
+    </TabsContent>
   )
 }

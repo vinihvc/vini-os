@@ -1,0 +1,175 @@
+.theme-zinc {
+	--theme-primary: 240 5.9% 10%;
+	--theme-primary-foreground: 0 0% 98%;
+
+	--theme-secondary: 240 4.8% 95.9%;
+	--theme-secondary-foreground: 240 5.9% 10%;
+
+	--theme-accent: 240 3.7% 15.9%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.dark .theme-zinc {
+	--theme-primary: 0 0% 98%;
+	--theme-primary-foreground: 240 5.9% 10%;
+
+	--theme-secondary: 240 3.7% 15.9%;
+	--theme-secondary-foreground: 0 0% 98%;
+
+	--theme-accent: 240 3.7% 15.9%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.theme-red {
+	--theme-primary: 0 72.2% 50.6%;
+	--theme-primary-foreground: 0 85.7% 97.3%;
+
+	--theme-secondary: 0 0% 96.1%;
+	--theme-secondary-foreground: 0 0% 9%;
+
+	--theme-accent: 0 0% 14.9%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.dark .theme-red {
+	--theme-primary: 0 72.2% 50.6%;
+	--theme-primary-foreground: 0 85.7% 97.3%;
+
+	--theme-secondary: 0 0% 14.9%;
+	--theme-secondary-foreground: 0 0% 98%;
+
+	--theme-accent: 0 0% 14.9%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.theme-rose {
+	--theme-primary: 346.8 77.2% 49.8%;
+	--theme-primary-foreground: 355.7 100% 97.3%;
+
+	--theme-secondary: 240 4.8% 95.9%;
+	--theme-secondary-foreground: 240 5.9% 10%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.dark .theme-rose {
+	--theme-primary: 346.8 77.2% 49.8%;
+	--theme-primary-foreground: 355.7 100% 97.3%;
+
+	--theme-secondary: 240 3.7% 15.9%;
+	--theme-secondary-foreground: 0 0% 98%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.theme-orange {
+	--theme-primary: 24.6 95% 53.1%;
+	--theme-primary-foreground: 60 9.1% 97.8%;
+
+	--theme-secondary: 60 4.8% 95.9%;
+	--theme-secondary-foreground: 24 9.8% 10%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 60 9.1% 97.8%;
+}
+
+.dark .theme-orange {
+	--theme-primary: 20.5 90.2% 48.2%;
+	--theme-primary-foreground: 60 9.1% 97.8%;
+
+	--theme-secondary: 12 6.5% 15.1%;
+	--theme-secondary-foreground: 60 9.1% 97.8%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 60 9.1% 97.8%;
+}
+
+.theme-green {
+	--theme-primary: 24.6 95% 53.1%;
+	--theme-primary-foreground: 60 9.1% 97.8%;
+
+	--theme-secondary: 60 4.8% 95.9%;
+	--theme-secondary-foreground: 24 9.8% 10%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.dark .theme-green {
+	--theme-primary: 142.1 70.6% 45.3%;
+	--theme-primary-foreground: 144.9 80.4% 10%;
+
+	--theme-secondary: 240 3.7% 15.9%;
+	--theme-secondary-foreground: 0 0% 98%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 0 0% 98%;
+}
+
+.theme-blue {
+	--theme-primary: 221.2 83.2% 53.3%;
+	--theme-primary-foreground: 210 40% 98%;
+
+	--theme-secondary: 210 40% 96.1%;
+	--theme-secondary-foreground: 222.2 47.4% 11.2%;
+
+	--theme-accent: 217.2 32.6% 17.5%;
+	--theme-accent-foreground: 210 40% 98%;
+}
+
+.dark .theme-blue {
+	--theme-primary: 217.2 91.2% 59.8%;
+	--theme-primary-foreground: 222.2 47.4% 11.2%;
+
+	--theme-secondary: 217.2 32.6% 17.5%;
+	--theme-secondary-foreground: 210 40% 98%;
+
+	--theme-accent: 217.2 32.6% 17.5%;
+	--theme-accent-foreground: 210 40% 98%;
+}
+
+.theme-yellow {
+	--theme-primary: 47.9 95.8% 53.1%;
+	--theme-primary-foreground: 26 83.3% 14.1%;
+
+	--theme-secondary: 60 4.8% 95.9%;
+	--theme-secondary-foreground: 24 9.8% 10%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 60 9.1% 97.8%;
+}
+
+.dark .theme-yellow {
+	--theme-primary: 47.9 95.8% 53.1%;
+	--theme-primary-foreground: 26 83.3% 14.1%;
+
+	--theme-secondary: 12 6.5% 15.1%;
+	--theme-secondary-foreground: 60 9.1% 97.8%;
+
+	--theme-accent: 12 6.5% 15.1%;
+	--theme-accent-foreground: 60 9.1% 97.8%;
+}
+
+.theme-violet {
+	--theme-primary: 262.1 83.3% 57.8%;
+	--theme-primary-foreground: 210 20% 98%;
+
+	--theme-secondary: 220 14.3% 95.9%;
+	--theme-secondary-foreground: 220.9 39.3% 11%;
+
+	--theme-accent: 215 27.9% 16.9%;
+	--theme-accent-foreground: 210 20% 98%;
+}
+
+.dark .theme-violet {
+	--theme-primary: 263.4 70% 50.4%;
+	--theme-primary-foreground: 210 20% 98%;
+
+	--theme-secondary: 215 27.9% 16.9%;
+	--theme-secondary-foreground: 210 20% 98%;
+
+	--theme-accent: 215 27.9% 16.9%;
+	--theme-accent-foreground: 210 20% 98%;
+}

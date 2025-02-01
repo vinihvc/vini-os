@@ -6,10 +6,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/primitives/popover'
+import { openWindow } from '@/components/ui/window-manager/window.store'
 import { cn } from '@/lib/cn'
+import { PopoverClose } from '@radix-ui/react-popover'
 import {
   Calculator,
   Image,
+  KeyboardMusic,
   LayoutGrid,
   Mail,
   Music,
@@ -43,14 +46,13 @@ export const Applications = (props: ApplicationsProps) => {
         className={cn('h-[600px] w-auto gap-2', className)}
         style={{
           width: DOCK_WIDTH,
-          zIndex: 1000,
           ...rest.style,
         }}
         {...rest}
       >
         <div className="font-semibold">Applications</div>
 
-        <div className="mt-10 grid grid-cols-5 gap-4">
+        <div className="mt-6 grid grid-cols-5 gap-4">
           <Button
             className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
             size="icon"
@@ -71,15 +73,18 @@ export const Applications = (props: ApplicationsProps) => {
             <span className="text-xs">Mail</span>
           </Button>
 
-          <Button
-            className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-            size="icon"
-            variant="ghost"
-          >
-            <Settings />
+          <PopoverClose asChild>
+            <Button
+              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
+              size="icon"
+              variant="ghost"
+              onClick={() => openWindow('settings')}
+            >
+              <Settings />
 
-            <span className="text-xs">Settings</span>
-          </Button>
+              <span className="text-xs">Settings</span>
+            </Button>
+          </PopoverClose>
 
           <Button
             className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
@@ -109,6 +114,16 @@ export const Applications = (props: ApplicationsProps) => {
             <Image />
 
             <span className="text-xs">Photos</span>
+          </Button>
+
+          <Button
+            className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
+            size="icon"
+            variant="ghost"
+          >
+            <KeyboardMusic />
+
+            <span className="text-xs">Piano</span>
           </Button>
         </div>
       </PopoverContent>

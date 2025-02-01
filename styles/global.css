@@ -1,52 +1,136 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
-::selection {
-	@apply bg-primary text-background;
-}
-
-html {
-	@apply scroll-smooth;
-}
-
-body {
-	@apply bg-background h-dvh flex flex-col text-foreground font-sans antialiased overflow-hidden;
-}
-
-main {
-	@apply flex flex-col flex-1;
-}
-
 @theme {
 	--font-sans: "Geist", sans-serif;
 
-	--color-background: oklch(1 0 0);
-	--color-foreground: oklch(0.2824 0.0262 254.4);
+	--color-background: hsl(var(--theme-background));
+	--color-foreground: hsl(var(--theme-foreground));
 
-	--color-muted: oklch(0.9572 0.0101 240.01);
-	--color-muted-foreground: oklch(0.5048 0.0197 248.99);
+	--color-muted: hsl(var(--theme-muted));
+	--color-muted-foreground: hsl(var(--theme-muted-foreground));
 
-	--color-popover: oklch(1 0 0);
-	--color-popover-foreground: oklch(0.2824 0.0262 254.4);
+	--color-popover: hsl(var(--theme-popover));
+	--color-popover-foreground: hsl(var(--theme-popover-foreground));
 
-	--color-border: oklch(0.9068 0.0118 238.34);
+	--color-card: hsl(var(--theme-card));
+	--color-card-foreground: hsl(var(--theme-card-foreground));
 
-	--color-input: oklch(0.9068 0.0118 238.34);
+	--color-primary: hsl(var(--theme-primary));
+	--color-primary-foreground: hsl(var(--theme-primary-foreground));
 
-	--color-card: oklch(1 0 0);
-	--color-card-foreground: oklch(0.2824 0.0262 254.4);
+	--color-secondary: hsl(var(--theme-secondary));
+	--color-secondary-foreground: hsl(var(--theme-secondary-foreground));
 
-	--color-primary: oklch(0.2824 0.0262 254.4);
-	--color-primary-foreground: oklch(0.9811 0.0101 240.01);
+	--color-accent: hsl(var(--theme-accent));
+	--color-accent-foreground: hsl(var(--theme-accent-foreground));
 
-	--color-secondary: oklch(0.9572 0.0101 240.01);
-	--color-secondary-foreground: oklch(0.2824 0.0262 254.4);
+	--color-destructive: hsl(var(--theme-destructive));
+	--color-destructive-foreground: hsl(var(--theme-destructive-foreground));
 
-	--color-accent: oklch(62.34% 0.1877 259.99);
-	--color-accent-foreground: oklch(100% 0 259.99);
+	--color-border: hsl(var(--theme-border));
+	--color-input: hsl(var(--theme-input));
+	--color-ring: hsl(var(--theme-ring));
+}
 
-	--color-destructive: oklch(0.6242 0.2729 29.234);
-	--color-destructive-foreground: oklch(0.9811 0.0101 240.01);
+@layer base {
+	:root {
+		--theme-background: 0 0% 100%;
+		--theme-foreground: 240 10% 3.9%;
 
-	--color-ring: oklch(0.6987 0.0183 246.06);
+		--theme-card: 0 0% 100%;
+		--theme-card-foreground: 240 10% 3.9%;
+
+		--theme-popover: 0 0% 100%;
+		--theme-popover-foreground: 240 10% 3.9%;
+
+		--theme-primary: 240 5.9% 10%;
+		--theme-primary-foreground: 0 0% 98%;
+
+		--theme-secondary: 240 4.8% 95.9%;
+		--theme-secondary-foreground: 240 5.9% 10%;
+
+		--theme-muted: 240 4.8% 95.9%;
+		--theme-muted-foreground: 240 3.8% 46.1%;
+
+		--theme-accent: 240 4.8% 95.9%;
+		--theme-accent-foreground: 240 5.9% 10%;
+
+		--theme-destructive: 0 84.2% 60.2%;
+		--theme-destructive-foreground: 0 0% 98%;
+
+		--theme-border: 240 5.9% 90%;
+		--theme-input: 240 5.9% 90%;
+		--theme-ring: 240 5.9% 10%;
+	}
+
+	.dark {
+		--theme-background: 240 10% 3.9%;
+		--theme-foreground: 0 0% 98%;
+
+		--theme-card: 240 10% 3.9%;
+		--theme-card-foreground: 0 0% 98%;
+
+		--theme-popover: 240 10% 3.9%;
+		--theme-popover-foreground: 0 0% 98%;
+
+		--theme-primary: 0 0% 98%;
+		--theme-primary-foreground: 240 5.9% 10%;
+
+		--theme-secondary: 240 3.7% 15.9%;
+		--theme-secondary-foreground: 0 0% 98%;
+
+		--theme-muted: 240 3.7% 15.9%;
+		--theme-muted-foreground: 240 5% 64.9%;
+
+		--theme-accent: 240 3.7% 15.9%;
+		--theme-accent-foreground: 0 0% 98%;
+
+		--theme-destructive: 0 62.8% 30.6%;
+		--theme-destructive-foreground: 0 0% 98%;
+
+		--theme-border: 240 3.7% 15.9%;
+		--theme-input: 240 3.7% 15.9%;
+		--theme-ring: 240 4.9% 83.9%;
+	}
+
+	* {
+		@apply border-border;
+	}
+
+	html {
+		@apply scroll-smooth;
+	}
+
+	body {
+		@apply bg-background h-dvh flex flex-col text-foreground font-sans antialiased overflow-hidden;
+		font-synthesis-weight: none;
+		text-rendering: optimizeLegibility;
+	}
+
+	main {
+		@apply flex flex-col flex-1;
+	}
+
+	::selection {
+		@apply bg-primary text-primary-foreground;
+	}
+
+	::-webkit-scrollbar {
+		width: 5px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: hsl(var(--color-border));
+		border-radius: 5px;
+	}
+
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: hsl(var(--color-border)) transparent;
+	}
 }

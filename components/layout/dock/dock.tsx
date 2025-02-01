@@ -1,5 +1,6 @@
 'use client'
 
+import { ToggleGroup } from '@/components/primitives/toggle-group'
 import { cn } from '@/lib/cn'
 import { CalendarDays, Folder, Globe, Settings } from 'lucide-react'
 import { DockControls } from './controls/dock.controls'
@@ -28,7 +29,10 @@ export const Dock = (props: DockProps) => {
         <div className="flex w-full items-center">
           <Applications />
 
-          <div className="mx-2 flex flex-1 items-center space-x-1">
+          <ToggleGroup
+            type="multiple"
+            className="mx-2 flex flex-1 items-center space-x-1"
+          >
             <DockItem
               data={{
                 value: 'explorer',
@@ -60,7 +64,7 @@ export const Dock = (props: DockProps) => {
                 label: 'Calendar',
               }}
             />
-          </div>
+          </ToggleGroup>
 
           <DockControls />
         </div>

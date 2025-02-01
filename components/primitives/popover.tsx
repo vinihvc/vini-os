@@ -23,11 +23,11 @@ export const PopoverContent = React.forwardRef<
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          'z-50 w-72',
-          'p-4',
+          'w-72',
+          'z-50 p-4',
           'bg-background/90 text-foreground',
           'shadow-md backdrop-blur',
-          'rounded-lg border border-background',
+          'rounded-lg border',
           'outline-none',
           'data-[state=closed]:animate-out data-[state=open]:animate-in',
           'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',

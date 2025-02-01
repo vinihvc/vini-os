@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import '@/styles/global.css'
 import { Dock } from '@/components/layout/dock/dock'
-import { Wallpaper } from '@/components/ui/wallpaper'
+import { Wallpaper } from '@/components/layout/wallpaper'
 import { WindowManager } from '@/components/ui/window-manager'
 import { fontSans } from '@/lib/font'
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${fontSans.variable} antialiased`}>
+      <body className={fontSans.variable}>
         <Providers>
           {children}
 

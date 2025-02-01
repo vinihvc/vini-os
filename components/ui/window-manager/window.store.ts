@@ -46,15 +46,19 @@ export const useWindowState = () => {
   return windowManager
 }
 
-export const openWindow = (window: keyof WindowManagerState) => {
-  const isAlreadyOpen = store.get(windowManagerAtom)[window].isOpen
+export const openWindow = (
+  window: keyof WindowManagerState,
+  minimize = false,
+) => {
+  const { isOpen, isMinimized } = store.get(windowManagerAtom)[window]
 
   store.set(windowManagerAtom, (prev) => ({
     ...prev,
     [window]: {
-      isOpen: !isAlreadyOpen,
-      isMinimized: false,
-      isFocused: true,
+      isOpen: true,
+      ...(isOpen && !isMinimized && minimize
+        ? { isMinimized: true }
+        : { isMinimized: false }),
     },
   }))
 

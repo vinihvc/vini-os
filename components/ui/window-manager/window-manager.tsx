@@ -1,8 +1,8 @@
 'use client'
 
 import { BrowserWindow } from '@/components/windows/browser'
-import { CalendarWindow } from '@/components/windows/calendar'
-import { ExplorerWindow } from '@/components/windows/explorer'
+import { CalendarWindow } from '@/components/windows/calendar/calendar'
+import { ExplorerWindow } from '@/components/windows/explorer/explorer'
 import { SettingsWindow } from '../../windows/settings'
 import { useWindowHistory } from './window.history'
 import type { WindowManagerState } from './window.store'
@@ -12,7 +12,8 @@ export const WindowManager = () => {
 
   const determineZIndex = (window: keyof WindowManagerState) => {
     const index = windowHistory.history.indexOf(window)
-    return 99 + (index === -1 ? 0 : windowHistory.history.length - index)
+
+    return 20 + (index === -1 ? 0 : windowHistory.history.length - index)
   }
 
   return (

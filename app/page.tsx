@@ -1,9 +1,5 @@
 const HomePage = () => {
-  return (
-    <>
-      <main className="">{/*  */}</main>
-    </>
-  )
+  return <>{/*  */}</>
 }
 
 export default HomePage

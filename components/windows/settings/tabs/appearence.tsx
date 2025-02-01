@@ -1,64 +1,103 @@
 'use client'
 
 import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from '@/components/primitives/toggle-group'
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupItemWithIndicator,
+} from '@/components/primitives/radio-group'
+import { TabsContent } from '@/components/primitives/tabs'
+import { THEME_COLORS } from '@/config/theme-color'
+import { type ThemeColor, setThemeColor, useThemeColor } from '@/store/theme'
 import { useTheme } from 'next-themes'
 
-export const AppearanceTab = () => {
+export const AppearanceSettings = () => {
   const { theme, setTheme } = useTheme()
 
-  const handleThemeChange = (value: string) => {
-    setTheme(value)
-  }
+  const { color } = useThemeColor()
 
   return (
-    <ToggleGroup
-      className="grid gap-2"
-      type="single"
-      value={theme}
-      onValueChange={handleThemeChange}
-    >
-      <div className="flex items-center justify-between">
-        <div className="font-semibold text-sm">Mode</div>
-      </div>
+    <TabsContent className="gap-5" value="appearance">
+      <RadioGroup
+        className="grid gap-4"
+        value={theme}
+        onValueChange={(value) => setTheme(value)}
+      >
+        <div className="flex items-center justify-between">
+          <div className="font-semibold text-sm">Mode</div>
+        </div>
 
-      <div className="grid grid-cols-3 gap-2">
-        <label htmlFor="light" className="flex flex-col items-center gap-2">
-          <ToggleGroupItem
-            id="light"
-            value="light"
-            className="h-20 w-full cursor-pointer rounded-lg border-2 border-black bg-white data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-1 data-[state=on]:ring-offset-background"
-          />
+        <div className="grid grid-cols-3 gap-4">
+          <label htmlFor="light" className="flex flex-col items-center gap-2">
+            <RadioGroupItem
+              id="light"
+              value="light"
+              className="h-20 w-full cursor-pointer rounded-xl border bg-white"
+              active="ring"
+            />
 
-          <div className="select-none font-medium text-xs">Light</div>
-        </label>
+            <div className="select-none font-medium text-xs">Light</div>
+          </label>
 
-        <label htmlFor="dark" className="flex flex-col items-center gap-2">
-          <ToggleGroupItem
-            id="dark"
-            value="dark"
-            className="h-20 w-full cursor-pointer rounded-lg border-2 border-black bg-black data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-1 data-[state=on]:ring-offset-background"
-          />
+          <label htmlFor="dark" className="flex flex-col items-center gap-1">
+            <RadioGroupItem
+              id="dark"
+              value="dark"
+              className="h-20 w-full cursor-pointer rounded-xl border bg-black"
+              active="ring"
+            />
 
-          <div className="select-none font-medium text-xs">Dark</div>
-        </label>
+            <div className="select-none font-medium text-xs">Dark</div>
+          </label>
 
-        <label htmlFor="auto" className="flex flex-col items-center gap-2">
-          <ToggleGroupItem
-            id="auto"
-            value="system"
-            className="flex h-20 w-full cursor-pointer gap-0 rounded-lg border-2 border-black data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-1 data-[state=on]:ring-offset-background"
-          >
-            <div className="h-full w-full rounded-l-md bg-black" />
+          <label htmlFor="auto" className="flex flex-col items-center gap-2">
+            <RadioGroupItem
+              id="auto"
+              value="system"
+              className="flex h-20 w-full cursor-pointer overflow-clip rounded-xl border"
+              active="ring"
+            >
+              <div className="h-full w-full bg-black" />
 
-            <div className="h-full w-full rounded-r-md bg-white" />
-          </ToggleGroupItem>
+              <div className="h-full w-full bg-white" />
+            </RadioGroupItem>
 
-          <div className="select-none font-medium text-xs">Auto</div>
-        </label>
-      </div>
-    </ToggleGroup>
+            <div className="select-none font-medium text-xs">Auto</div>
+          </label>
+        </div>
+      </RadioGroup>
+
+      <RadioGroup
+        className="grid gap-4"
+        value={color}
+        onValueChange={(e) => setThemeColor({ color: e as ThemeColor })}
+      >
+        <div className="flex items-center justify-between">
+          <div className="font-semibold text-sm">Accent</div>
+        </div>
+
+        <div className="grid grid-cols-6 gap-4">
+          {THEME_COLORS.map(({ name, value, color }) => (
+            <label
+              key={value}
+              htmlFor={value}
+              className="flex flex-col items-center gap-1"
+              style={
+                {
+                  '--theme-primary': `${color}`,
+                } as React.CSSProperties
+              }
+            >
+              <RadioGroupItemWithIndicator
+                id={value}
+                value={value}
+                className="border bg-[var(--theme-primary)]"
+              />
+
+              <div className="select-none font-medium text-xs">{name}</div>
+            </label>
+          ))}
+        </div>
+      </RadioGroup>
+    </TabsContent>
   )
 }

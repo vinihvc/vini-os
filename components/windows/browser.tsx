@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, RefreshCcw, User } from 'lucide-react'
 import React from 'react'
 import { Button } from '../primitives/button'
 import { Input } from '../primitives/input'
-import { Window } from '../primitives/window'
+import { Window } from '../primitives/window/window'
 
 const WINDOW_NAME = 'browser'
 
@@ -58,14 +58,14 @@ export const BrowserWindow = (props: BrowserWindowProps) => {
 
   return (
     <Window
-      title="Browser"
       className="h-[800px] w-[1200px] overflow-hidden"
       value={WINDOW_NAME}
       zIndex={zIndex}
+      headerClassName="h-12"
       {...rest}
     >
       <div className="flex flex-1 flex-col">
-        <div className="flex items-center gap-2 border-border border-b p-2">
+        <div className="flex items-center gap-2 border-b bg-accent p-2 pr-20">
           <Button
             variant="ghost"
             size="icon"
@@ -88,7 +88,7 @@ export const BrowserWindow = (props: BrowserWindowProps) => {
             <RefreshCcw />
           </Button>
 
-          <form className="mx-14 flex-1" onSubmit={handleSubmit}>
+          <form className="z-10 mx-14 flex-1" onSubmit={handleSubmit}>
             <Input type="url" />
           </form>
 
@@ -97,7 +97,7 @@ export const BrowserWindow = (props: BrowserWindowProps) => {
           </Button>
         </div>
 
-        <div className="flex flex-1 flex-col bg-background">
+        <div className="flex flex-1 flex-col">
           {url && (
             <iframe
               title="Browser"

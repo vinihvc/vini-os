@@ -1,5 +1,6 @@
 'use client'
 
+import { ToggleGroupItem } from '@/components/primitives/toggle-group'
 import {
   Tooltip,
   TooltipContent,
@@ -41,18 +42,22 @@ export const DockItem = (props: DockItemProps) => {
   return (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>
-        <Button
-          data-state={windowManager[data.value].isOpen ? 'open' : 'closed'}
-          className={cn(
-            "data-[state=open]:after:-translate-x-1/2 data-[state=open]:after:absolute data-[state=open]:after:bottom-1 data-[state=open]:after:left-1/2 data-[state=open]:after:h-0.5 data-[state=open]:after:w-0.5 data-[state=open]:after:rounded-full data-[state=open]:after:bg-foreground/80 data-[state=open]:after:content-['']",
-          )}
-          variant="ghost"
-          size="icon"
-          onClick={() => openWindow(data.value)}
-          {...rest}
-        >
-          <data.icon />
-        </Button>
+        <ToggleGroupItem value={data.value} asChild>
+          <Button
+            data-state={windowManager[data.value].isOpen ? 'open' : 'closed'}
+            data-minimized={windowManager[data.value].isMinimized}
+            className={cn(
+              'data-[minimized=false]:data-[state=open]:bg-foreground/5',
+              "data-[state=open]:after:-translate-x-1/2 data-[state=open]:after:absolute data-[state=open]:after:bottom-1 data-[state=open]:after:left-1/2 data-[state=open]:after:h-0.5 data-[state=open]:after:w-0.5 data-[state=open]:after:rounded-full data-[state=open]:after:bg-foreground/80 data-[state=open]:after:content-['']",
+            )}
+            variant="ghost"
+            size="icon"
+            onClick={() => openWindow(data.value, true)}
+            {...rest}
+          >
+            <data.icon />
+          </Button>
+        </ToggleGroupItem>
       </TooltipTrigger>
 
       <TooltipContent sideOffset={14}>{data.label}</TooltipContent>

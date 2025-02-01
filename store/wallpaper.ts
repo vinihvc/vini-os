@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
+import { store } from './global'
 
 type WallpaperState = {
   type: 'solid' | 'image'
@@ -12,5 +13,11 @@ const wallpaperAtom = atomWithStorage<WallpaperState>('wallpaper', {
 })
 
 export const useWallpaper = () => {
-  return useAtom(wallpaperAtom)
+  const [wallpaper] = useAtom(wallpaperAtom)
+
+  return wallpaper
+}
+
+export const setWallpaper = (wallpaper: WallpaperState) => {
+  store.set(wallpaperAtom, wallpaper)
 }
