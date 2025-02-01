@@ -14,9 +14,11 @@ export const buttonVariants = tv({
   ],
   variants: {
     variant: {
-      solid: 'bg-primary text-primary-foreground',
-      outline: 'border text-foreground',
-      ghost: 'hover:bg-foreground/10 text-foreground',
+      none: [],
+      solid: ['bg-primary text-primary-foreground'],
+      outline: ['border text-foreground'],
+      ghost: ['hover:bg-foreground/10 text-foreground'],
+      link: ['text-foreground hover:underline underline-offset-2'],
     },
     size: {
       sm: 'h-9 px-3',

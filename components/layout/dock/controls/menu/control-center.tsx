@@ -32,7 +32,7 @@ export const ControlCenter = () => {
         <div className="grid grid-cols-2 gap-2">
           <div className="grid gap-2 rounded-2xl bg-foreground/5 px-2 py-2">
             <Toggle defaultPressed asChild>
-              <Button className="group justify-start gap-2 px-0">
+              <Button className="group justify-start gap-2 px-0" variant="none">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background transition group-data-[state=off]:bg-foreground/10 group-data-[state=off]:text-foreground">
                   <Wifi className="h-4 w-4" />
                 </div>
@@ -47,7 +47,7 @@ export const ControlCenter = () => {
             </Toggle>
 
             <Toggle defaultPressed asChild>
-              <Button className="group justify-start gap-2 px-0">
+              <Button className="group justify-start gap-2 px-0" variant="none">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background transition group-data-[state=off]:bg-foreground/10 group-data-[state=off]:text-foreground">
                   <Bluetooth className="h-4 w-4" />
                 </div>
@@ -63,7 +63,7 @@ export const ControlCenter = () => {
           </div>
 
           <Toggle active="solid" asChild>
-            <Button className="h-full flex-col place-items-center gap-4 rounded-2xl bg-foreground/5 p-2 [&>svg]:h-6 [&>svg]:w-6">
+            <Button className="h-full flex-col place-items-center gap-4 rounded-2xl bg-foreground/5 p-2 text-foreground [&>svg]:h-6 [&>svg]:w-6">
               <Moon />
 
               <span className="font-medium text-xs">Focus Mode</span>

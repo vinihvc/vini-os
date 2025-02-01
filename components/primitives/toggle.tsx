@@ -20,7 +20,7 @@ export const toggleVariants = tv({
         'data-[state=on]:ring-2 data-[state=on]:ring-foreground data-[state=on]:ring-offset-2 data-[state=on]:ring-offset-background',
       ],
       solid: [
-        'data-[state=on]:bg-accent-foreground data-[state=on]:text-accent',
+        'data-[state=on]:bg-primary data-[state=on]:text-primary-foreground',
       ],
     },
   },
