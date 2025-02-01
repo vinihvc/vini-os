@@ -9,7 +9,7 @@ export const ExplorerDesktop = () => {
   return (
     <TabsContent value="desktop">
       <ToggleGroup type="single" className="grid grid-cols-5 gap-2">
-        <ToggleGroupItem value="projects" asChild>
+        <ToggleGroupItem value="projects" active="solid" asChild>
           <Button
             className="h-20 w-full flex-col [&>svg]:h-6 [&>svg]:w-6"
             variant="ghost"
@@ -20,7 +20,7 @@ export const ExplorerDesktop = () => {
           </Button>
         </ToggleGroupItem>
 
-        <ToggleGroupItem value="notes" asChild>
+        <ToggleGroupItem value="notes" active="solid" asChild>
           <Button
             className="h-20 w-full flex-col [&>svg]:h-6 [&>svg]:w-6"
             variant="ghost"

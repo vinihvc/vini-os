@@ -15,6 +15,10 @@ export type WindowManagerState = {
   explorer: Window
   browser: Window
   calendar: Window
+  notepad: Window
+  calculator: Window
+  player: Window
+  photos: Window
 }
 
 export const windowManagerAtom = atom<WindowManagerState>({
@@ -34,6 +38,26 @@ export const windowManagerAtom = atom<WindowManagerState>({
     isFocused: false,
   },
   calendar: {
+    isOpen: false,
+    isMinimized: false,
+    isFocused: false,
+  },
+  notepad: {
+    isOpen: false,
+    isMinimized: false,
+    isFocused: false,
+  },
+  calculator: {
+    isOpen: false,
+    isMinimized: false,
+    isFocused: false,
+  },
+  player: {
+    isOpen: false,
+    isMinimized: false,
+    isFocused: false,
+  },
+  photos: {
     isOpen: false,
     isMinimized: false,
     isFocused: false,

@@ -14,7 +14,7 @@ export const buttonVariants = tv({
   ],
   variants: {
     variant: {
-      solid: '',
+      solid: 'bg-primary text-primary-foreground',
       outline: 'border text-foreground',
       ghost: 'hover:bg-foreground/10 text-foreground',
     },

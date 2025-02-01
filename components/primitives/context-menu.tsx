@@ -26,7 +26,12 @@ const ContextMenuSubTrigger = React.forwardRef<
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 font-medium text-xs outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
+      'flex cursor-default select-none items-center',
+      'rounded-sm px-2 py-1.5',
+      'font-medium text-xs',
+      'outline-none',
+      'focus:bg-primary focus:text-primary-foreground',
+      'data-[state=open]:bg-primary data-[state=open]:text-primary-foreground',
       inset && 'pl-8',
       className,
     )}
@@ -46,7 +51,19 @@ const ContextMenuSubContent = React.forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=closed]:animate-out data-[state=open]:animate-in',
+      'z-50 min-w-32',
+      'rounded-md border',
+      'bg-background/90 backdrop-blur',
+      'text-foreground',
+      'shadow-md',
+      'overflow-hidden',
+      'data-[state=closed]:animate-out data-[state=open]:animate-in',
+      'data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0',
+      'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
+      'data-[side=bottom]:slide-in-from-top-2',
+      'data-[side=left]:slide-in-from-right-2',
+      'data-[side=right]:slide-in-from-left-2',
+      'data-[side=top]:slide-in-from-bottom-2',
       className,
     )}
     {...props}
@@ -63,7 +80,20 @@ const ContextMenuContent = React.forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
-        'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=open]:animate-in',
+        'z-50 min-w-32',
+        'p-0.5',
+        'rounded-md border',
+        'bg-background/90 backdrop-blur',
+        'text-foreground',
+        'shadow-md',
+        'overflow-hidden',
+        'data-[state=closed]:animate-out data-[state=open]:animate-in',
+        'data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0',
+        'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
+        'data-[side=bottom]:slide-in-from-top-2',
+        'data-[side=left]:slide-in-from-right-2',
+        'data-[side=right]:slide-in-from-left-2',
+        'data-[side=top]:slide-in-from-bottom-2',
         className,
       )}
       {...props}
@@ -86,8 +116,8 @@ const ContextMenuItem = React.forwardRef<
       'rounded-sm',
       'font-medium text-xs',
       'px-2 py-1.5',
-      'cursor-pointer select-none ',
-      'outline-none focus:bg-accent focus:text-accent-foreground',
+      'cursor-pointer select-none',
+      'outline-none focus:bg-primary focus:text-primary-foreground',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       inset && 'pl-8',
       className,

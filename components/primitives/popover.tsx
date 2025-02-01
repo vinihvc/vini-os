@@ -24,9 +24,10 @@ export const PopoverContent = React.forwardRef<
         sideOffset={sideOffset}
         className={cn(
           'w-72',
-          'z-50 p-4',
-          'bg-background/90 text-foreground',
-          'shadow-md backdrop-blur',
+          'z-50 p-2',
+          'bg-background/90 backdrop-blur',
+          'text-foreground',
+          'shadow-md',
           'rounded-lg border',
           'outline-none',
           'data-[state=closed]:animate-out data-[state=open]:animate-in',

@@ -67,7 +67,12 @@ export const DropdownContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-background/90 text-foreground shadow-md',
+        'z-50 min-w-32',
+        'bg-background/90 backdrop-blur',
+        'text-foreground',
+        'rounded-md border',
+        'shadow-md',
+        'overflow-hidden',
         'data-[state=closed]:animate-out data-[state=open]:animate-in',
         'data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 ',
         'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
@@ -96,7 +101,7 @@ export const DropdownItem = React.forwardRef<
       'relative flex cursor-default select-none items-center',
       'gap-2 rounded-sm px-2 py-1.5',
       'font-medium text-xs',
-      'focus:bg-accent focus:text-accent-foreground ',
+      'focus:bg-primary focus:text-primary-foreground',
       'outline-none transition-colors',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       '[&>svg]:size-4 [&>svg]:shrink-0',
