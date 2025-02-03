@@ -14,7 +14,16 @@ export const WallpaperSettings = () => {
 
   return (
     <TabsContent value="wallpaper" asChild>
-      <ToggleGroup className="flex flex-col gap-4" type="single">
+      <ToggleGroup
+        className="flex flex-col gap-4"
+        type="single"
+        onValueChange={(e) =>
+          setWallpaper({
+            type: 'solid',
+            value: e,
+          })
+        }
+      >
         <div className="grid gap-2">
           <div className="flex items-center justify-between">
             <div className="font-medium text-sm">Solid</div>
@@ -22,35 +31,23 @@ export const WallpaperSettings = () => {
 
           <div className="grid grid-cols-4 gap-2">
             <ToggleGroupItem
-              value="blue"
-              className="h-20 w-full cursor-pointer rounded-xl border bg-blue-700"
-              onClick={() =>
-                setWallpaper({ type: 'solid', value: 'bg-blue-700' })
-              }
+              value="bg-blue-700"
+              className="h-20 w-full rounded-xl border border-muted-foreground bg-blue-700"
             />
 
             <ToggleGroupItem
-              value="indigo"
-              className="h-20 w-full cursor-pointer rounded-xl border bg-indigo-700"
-              onClick={() =>
-                setWallpaper({ type: 'solid', value: 'bg-indigo-700' })
-              }
+              value="bg-indigo-700"
+              className="h-20 w-full rounded-xl border border-muted-foreground bg-indigo-700"
             />
 
             <ToggleGroupItem
-              value="teal"
-              className="h-20 w-full cursor-pointer rounded-xl border bg-teal-700"
-              onClick={() =>
-                setWallpaper({ type: 'solid', value: 'bg-teal-700' })
-              }
+              value="bg-teal-700"
+              className="h-20 w-full rounded-xl border border-muted-foreground bg-teal-700"
             />
 
             <ToggleGroupItem
-              value="rose"
-              className="h-20 w-full cursor-pointer rounded-xl border bg-rose-700"
-              onClick={() =>
-                setWallpaper({ type: 'solid', value: 'bg-rose-700' })
-              }
+              value="bg-rose-700"
+              className="h-20 w-full rounded-xl border border-muted-foreground bg-rose-700"
             />
           </div>
         </div>
@@ -61,28 +58,38 @@ export const WallpaperSettings = () => {
           </div>
 
           <div className="grid grid-cols-4 gap-2">
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence mode="popLayout" initial={false}>
               {imagePlaceholder && (
                 <motion.div
+                  key="upload-wallpaper"
+                  layoutId="upload-wallpaper"
+                  className="h-20 w-full rounded-xl border border-muted-foreground p-0.5"
                   initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1, x: 0 }}
-                  transition={{ duration: 0.2 }}
-                  exit={{ opacity: 0, scale: 0.95, x: -8 }}
-                  className="h-20 w-full rounded-xl border p-0.5"
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
                 >
                   <img
                     src={imagePlaceholder}
-                    alt="Preview"
+                    alt="Preview wallpaper"
                     className="h-full w-full rounded-lg object-cover"
                   />
                 </motion.div>
               )}
-            </AnimatePresence>
 
-            <Upload
-              placeholder={imagePlaceholder}
-              onUpload={(e) => setWallpaper({ type: 'image', value: e })}
-            />
+              <Upload
+                placeholder={imagePlaceholder}
+                onUpload={(e) => setWallpaper({ type: 'image', value: e })}
+                asChild
+              >
+                <motion.div
+                  key="uploaded-wallpaper"
+                  layoutId="uploaded-wallpaper"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                />
+              </Upload>
+            </AnimatePresence>
           </div>
         </div>
       </ToggleGroup>

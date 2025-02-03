@@ -10,6 +10,7 @@ export const toggleVariants = tv({
     'flex items-center',
     'gap-2',
     'text-xs',
+    'cursor-pointer',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
     '[&>svg]:h-4 [&>svg]:w-4',
   ],

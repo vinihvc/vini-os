@@ -15,8 +15,7 @@
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"tailwindCSS.experimental.classRegex": [
-		["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-		["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+		["tv\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
 	],
 	"[tailwindcss]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
