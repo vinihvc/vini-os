@@ -1,10 +1,17 @@
+'use client'
+
 import { TabsContent } from '@/components/primitives/tabs'
 import { ToggleGroupItem } from '@/components/primitives/toggle-group'
 import { Upload } from '@/components/primitives/upload'
-import { setWallpaper } from '@/store/wallpaper'
+import { setWallpaper, useWallpaper } from '@/store/wallpaper'
 import { ToggleGroup } from '@radix-ui/react-toggle-group'
+import { AnimatePresence, motion } from 'motion/react'
 
 export const WallpaperSettings = () => {
+  const wallpaper = useWallpaper()
+
+  const imagePlaceholder = wallpaper.type === 'image' ? wallpaper.value : null
+
   return (
     <TabsContent value="wallpaper" asChild>
       <ToggleGroup className="flex flex-col gap-4" type="single">
@@ -54,10 +61,27 @@ export const WallpaperSettings = () => {
           </div>
 
           <div className="grid grid-cols-4 gap-2">
+            <AnimatePresence mode="wait" initial={false}>
+              {imagePlaceholder && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{ duration: 0.2 }}
+                  exit={{ opacity: 0, scale: 0.95, x: -8 }}
+                  className="h-20 w-full rounded-xl border p-0.5"
+                >
+                  <img
+                    src={imagePlaceholder}
+                    alt="Preview"
+                    className="h-full w-full rounded-lg object-cover"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <Upload
-              onUpload={(result) =>
-                setWallpaper({ type: 'image', value: result })
-              }
+              placeholder={imagePlaceholder}
+              onUpload={(e) => setWallpaper({ type: 'image', value: e })}
             />
           </div>
         </div>

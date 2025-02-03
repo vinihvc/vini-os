@@ -1,7 +1,12 @@
 import { cn } from '@/lib/cn'
+import { CloudUpload, type File } from 'lucide-react'
 import React from 'react'
 
 interface UploadProps extends React.ComponentProps<'div'> {
+  /**
+   * The placeholder text to display when no file is uploaded
+   */
+  placeholder?: string | null
   /**
    * Callback function that is called when a file is uploaded
    */
@@ -9,20 +14,21 @@ interface UploadProps extends React.ComponentProps<'div'> {
 }
 
 export const Upload = (props: UploadProps) => {
-  const { onUpload, ...rest } = props
+  const { placeholder, onUpload, ...rest } = props
 
-  const [previewUrl, setPreviewUrl] = React.useState<string | null>(null)
-  const [isDragging, setIsDragging] = React.useState(false)
   const fileInputRef = React.useRef<HTMLInputElement>(null)
+
+  const [isDragging, setIsDragging] = React.useState(false)
 
   const handleFile = (file: File) => {
     if (file.type.startsWith('image/')) {
       const reader = new FileReader()
+
       reader.onload = () => {
         const result = reader.result as string
-        setPreviewUrl(result)
         onUpload(result)
       }
+
       reader.readAsDataURL(file)
     }
   }
@@ -50,6 +56,7 @@ export const Upload = (props: UploadProps) => {
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
+
     if (file) handleFile(file)
   }
 
@@ -80,20 +87,12 @@ export const Upload = (props: UploadProps) => {
         onDrop={handleDrop}
         className={cn(
           'flex h-20 w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-muted-foreground border-dashed p-0.5 transition-colors',
-          'data-[dragging=true]:border-blue-500 data-[dragging=true]:bg-blue-50/10',
+          'data-[dragging=true]:border-foreground data-[dragging=true]:bg-foreground/10',
         )}
       >
-        {previewUrl ? (
-          <img
-            src={previewUrl}
-            alt="Preview"
-            className="h-full w-full rounded-md object-cover"
-          />
-        ) : (
-          <div className="text-center text-muted-foreground text-sm">
-            <p className="mt-1 whitespace-nowrap text-xs">JPG or PNG</p>
-          </div>
-        )}
+        <div className="text-center text-muted-foreground text-sm">
+          <CloudUpload className="h-4 w-4" />
+        </div>
       </div>
     </div>
   )
