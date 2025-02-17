@@ -1,6 +1,7 @@
 'use client'
-import { Tabs } from '../../primitives/tabs'
-import { Window } from '../../primitives/window/window'
+
+import { Tabs } from '@/components/primitives/tabs'
+import { Window } from '@/components/primitives/window'
 import { CalendarContent } from './calendar.content'
 import { CalendarWindowSidebar } from './calendar.sidebar'
 import { CalendarMonth } from './tabs/month'

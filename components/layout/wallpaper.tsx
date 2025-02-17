@@ -3,14 +3,15 @@
 import { cn } from '@/lib/cn'
 import { useWallpaper } from '@/store/wallpaper'
 import Image from 'next/image'
+
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '../primitives/context-menu'
-import { openWindow } from '../ui/window-manager/window.store'
-import { setSettingsTab } from '../windows/settings/settings.store'
+} from '@/components/primitives/context-menu'
+import { openWindow } from '@/components/ui/window-manager/window.store'
+import { setSettingsTab } from '@/modules/settings/settings.store'
 
 export const Wallpaper = () => {
   const wallpaper = useWallpaper()

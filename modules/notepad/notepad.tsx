@@ -1,10 +1,10 @@
+'use client'
+
 import { Textarea } from '@/components/primitives/textarea'
 import { cn } from '@/lib/cn'
 import { useState } from 'react'
 
-interface NotepadProps extends React.ComponentProps<'div'> {}
-
-export const Notepad = (props: NotepadProps) => {
+export const App = (props: React.ComponentProps<'div'>) => {
   const { className, ...rest } = props
 
   const [content, setContent] = useState('')
@@ -18,14 +18,11 @@ export const Notepad = (props: NotepadProps) => {
         placeholder="Type something..."
       />
 
-      {/* Status Bar */}
       <div className="flex h-6 items-center border-t bg-accent px-1">
         <span className="text-muted-foreground text-xs">
-          {content.length} characters
+          {`${content.length} characters`}
         </span>
       </div>
     </div>
   )
 }
-
-export default Notepad

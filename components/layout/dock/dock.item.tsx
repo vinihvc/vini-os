@@ -7,9 +7,9 @@ import {
   TooltipTrigger,
 } from '@/components/primitives/tooltip'
 import { cn } from '@/lib/cn'
+import type { ModuleType } from '@/modules'
 import { Button } from '../../primitives/button'
 import {
-  type WindowManagerState,
   openWindow,
   useWindowState,
 } from '../../ui/window-manager/window.store'
@@ -18,49 +18,36 @@ interface DockItemProps extends React.ComponentProps<'button'> {
   /**
    * The data to display
    */
-  data: {
-    /**
-     * The key of the window manager state
-     */
-    value: keyof WindowManagerState
-    /**
-     * The icon to display
-     */
-    icon: React.ElementType
-    /**
-     * The label to display
-     */
-    label: string
-  }
+  app: ModuleType
 }
 
 export const DockItem = (props: DockItemProps) => {
-  const { data, className, ...rest } = props
+  const { app, className, ...rest } = props
 
   const windowManager = useWindowState()
 
   return (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>
-        <ToggleGroupItem value={data.value} asChild>
+        <ToggleGroupItem value={app.key} asChild>
           <Button
-            data-state={windowManager[data.value].isOpen ? 'open' : 'closed'}
-            data-minimized={windowManager[data.value].isMinimized}
+            data-state={windowManager[app.key].isOpen ? 'open' : 'closed'}
+            data-minimized={windowManager[app.key].isMinimized}
             className={cn(
               'data-[minimized=false]:data-[state=open]:bg-foreground/5',
               "data-[state=open]:after:-translate-x-1/2 data-[state=open]:after:absolute data-[state=open]:after:bottom-1 data-[state=open]:after:left-1/2 data-[state=open]:after:h-0.5 data-[state=open]:after:w-0.5 data-[state=open]:after:rounded-full data-[state=open]:after:bg-foreground/80 data-[state=open]:after:content-['']",
             )}
             variant="ghost"
             size="icon"
-            onClick={() => openWindow(data.value, true)}
+            onClick={() => openWindow(app.key, true)}
             {...rest}
           >
-            <data.icon />
+            {app.icon}
           </Button>
         </ToggleGroupItem>
       </TooltipTrigger>
 
-      <TooltipContent sideOffset={14}>{data.label}</TooltipContent>
+      <TooltipContent sideOffset={14}>{app.label}</TooltipContent>
     </Tooltip>
   )
 }

@@ -19,6 +19,19 @@ import { Dropdown, DropdownContent, DropdownTrigger } from '../dropdown'
 
 interface WindowProps extends React.ComponentProps<'div'> {
   /**
+   * The settings of the window
+   */
+  settings?: {
+    /**
+     * The width of the window
+     */
+    width?: number
+    /**
+     * The height of the window
+     */
+    height?: number
+  }
+  /**
    * The class name of the header
    */
   headerClassName?: string
@@ -38,6 +51,7 @@ interface WindowProps extends React.ComponentProps<'div'> {
 
 export const Window = (props: WindowProps) => {
   const {
+    settings,
     headerClassName,
     dropdown,
     value,
@@ -83,7 +97,12 @@ export const Window = (props: WindowProps) => {
             '-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2',
             className,
           )}
-          style={{ zIndex, ...rest.style }}
+          style={{
+            zIndex,
+            width: settings?.width,
+            height: settings?.height,
+            ...rest.style,
+          }}
           onClick={() => focusWindow(value)}
         >
           <motion.div
@@ -155,4 +174,8 @@ export const Window = (props: WindowProps) => {
       )}
     </AnimatePresence>
   )
+}
+
+export const createWindow = (props: WindowProps) => {
+  return <Window {...props} />
 }

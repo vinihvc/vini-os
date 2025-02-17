@@ -1,5 +1,5 @@
 import { Tabs } from '@/components/primitives/tabs'
-import { Window } from '../../primitives/window'
+import { Window } from '@/components/primitives/window'
 import { PhotosContent } from './photos.content'
 import { PhotosSidebar } from './photos.sidebar'
 import { PhotosFavorites } from './tabs/favorites'

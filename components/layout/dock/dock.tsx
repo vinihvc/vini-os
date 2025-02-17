@@ -1,9 +1,7 @@
-'use client'
-
 import { ToggleGroup } from '@/components/primitives/toggle-group'
 import { cn } from '@/lib/cn'
-import { CalendarDays, Folder, Globe, Settings } from 'lucide-react'
-import { DockControls } from './controls/dock.controls'
+import type React from 'react'
+import { DockControls } from './controls'
 import { Applications } from './dock.applications'
 import { DockItem } from './dock.item'
 
@@ -11,8 +9,10 @@ export const DOCK_WIDTH = '42rem'
 
 interface DockProps extends React.ComponentProps<'div'> {}
 
-export const Dock = (props: DockProps) => {
+export const Dock = async (props: DockProps) => {
   const { className, ...rest } = props
+
+  const modules = (await import('@/modules')).default
 
   return (
     <div className="fixed inset-x-2 bottom-2">
@@ -33,37 +33,9 @@ export const Dock = (props: DockProps) => {
             type="multiple"
             className="mx-2 flex flex-1 items-center space-x-1"
           >
-            <DockItem
-              data={{
-                value: 'explorer',
-                icon: Folder,
-                label: 'Explorer',
-              }}
-            />
-
-            <DockItem
-              data={{
-                value: 'browser',
-                icon: Globe,
-                label: 'Browser',
-              }}
-            />
-
-            <DockItem
-              data={{
-                value: 'settings',
-                icon: Settings,
-                label: 'Settings',
-              }}
-            />
-
-            <DockItem
-              data={{
-                value: 'calendar',
-                icon: CalendarDays,
-                label: 'Calendar',
-              }}
-            />
+            {modules.map((app) => (
+              <DockItem key={app.key} app={app} />
+            ))}
           </ToggleGroup>
 
           <DockControls />

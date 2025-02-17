@@ -1,7 +1,7 @@
+import { Button } from '@/components/primitives/button'
+import { TabsList, TabsTrigger } from '@/components/primitives/tabs'
 import { WindowSidebar } from '@/components/primitives/window/window.sidebar'
 import { Calendar as CalendarIcon, Clock } from 'lucide-react'
-import { Button } from '../../primitives/button'
-import { TabsList, TabsTrigger } from '../../primitives/tabs'
 
 interface CalendarWindowSidebarProps extends React.ComponentProps<'div'> {}
 

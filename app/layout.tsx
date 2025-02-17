@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import '@/styles/global.css'
-import { Dock } from '@/components/layout/dock/dock'
-import { Wallpaper } from '@/components/layout/wallpaper'
-import { WindowManager } from '@/components/ui/window-manager'
 import { fontSans } from '@/lib/font'
 
+import { Dock } from '@/components/layout/dock'
+import { Wallpaper } from '@/components/layout/wallpaper'
+import { WindowManager } from '@/components/ui/window-manager'
 import { Providers } from './providers'
 
 export const metadata: Metadata = {

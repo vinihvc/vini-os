@@ -1,8 +1,9 @@
 'use client'
+
 import { DropdownItem } from '@/components/primitives/dropdown'
 import { Tabs } from '@/components/primitives/tabs'
+import { Window } from '@/components/primitives/window'
 import type React from 'react'
-import { Window } from '../../primitives/window/window'
 import { ExplorerContent } from './explorer.content'
 import { ExplorerSidebar } from './explorer.sidebar'
 import { ExplorerDesktop } from './tabs/desktop'

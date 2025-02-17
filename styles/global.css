@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
-@theme {
-	--font-sans: "Geist", sans-serif;
+@theme inline {
+	--default-font-family: "Geist", sans-serif;
 
 	--color-background: hsl(var(--theme-background));
 	--color-foreground: hsl(var(--theme-foreground));
@@ -34,66 +34,6 @@
 }
 
 @layer base {
-	:root {
-		--theme-background: 0 0% 100%;
-		--theme-foreground: 240 10% 3.9%;
-
-		--theme-card: 0 0% 100%;
-		--theme-card-foreground: 240 10% 3.9%;
-
-		--theme-popover: 0 0% 100%;
-		--theme-popover-foreground: 240 10% 3.9%;
-
-		--theme-primary: 240 5.9% 10%;
-		--theme-primary-foreground: 0 0% 98%;
-
-		--theme-secondary: 240 4.8% 95.9%;
-		--theme-secondary-foreground: 240 5.9% 10%;
-
-		--theme-muted: 240 4.8% 95.9%;
-		--theme-muted-foreground: 240 3.8% 46.1%;
-
-		--theme-accent: 240 4.8% 95.9%;
-		--theme-accent-foreground: 240 5.9% 10%;
-
-		--theme-destructive: 0 84.2% 60.2%;
-		--theme-destructive-foreground: 0 0% 98%;
-
-		--theme-border: 240 5.9% 90%;
-		--theme-input: 240 5.9% 90%;
-		--theme-ring: 240 5.9% 10%;
-	}
-
-	.dark {
-		--theme-background: 240 10% 3.9%;
-		--theme-foreground: 0 0% 98%;
-
-		--theme-card: 240 10% 3.9%;
-		--theme-card-foreground: 0 0% 98%;
-
-		--theme-popover: 240 10% 3.9%;
-		--theme-popover-foreground: 0 0% 98%;
-
-		--theme-primary: 0 0% 98%;
-		--theme-primary-foreground: 240 5.9% 10%;
-
-		--theme-secondary: 240 3.7% 15.9%;
-		--theme-secondary-foreground: 0 0% 98%;
-
-		--theme-muted: 240 3.7% 15.9%;
-		--theme-muted-foreground: 240 5% 64.9%;
-
-		--theme-accent: 240 3.7% 15.9%;
-		--theme-accent-foreground: 0 0% 98%;
-
-		--theme-destructive: 0 62.8% 30.6%;
-		--theme-destructive-foreground: 0 0% 98%;
-
-		--theme-border: 240 3.7% 15.9%;
-		--theme-input: 240 3.7% 15.9%;
-		--theme-ring: 240 4.9% 83.9%;
-	}
-
 	* {
 		@apply border-border;
 	}
@@ -115,22 +55,64 @@
 	::selection {
 		@apply bg-primary text-primary-foreground;
 	}
+}
 
-	::-webkit-scrollbar {
-		width: 5px;
-	}
+:root {
+	--theme-background: 0 0% 100%;
+	--theme-foreground: 240 10% 3.9%;
 
-	::-webkit-scrollbar-track {
-		background: transparent;
-	}
+	--theme-card: 0 0% 100%;
+	--theme-card-foreground: 240 10% 3.9%;
 
-	::-webkit-scrollbar-thumb {
-		background: hsl(var(--color-border));
-		border-radius: 5px;
-	}
+	--theme-popover: 0 0% 100%;
+	--theme-popover-foreground: 240 10% 3.9%;
 
-	* {
-		scrollbar-width: thin;
-		scrollbar-color: hsl(var(--color-border)) transparent;
-	}
+	--theme-primary: 240 5.9% 10%;
+	--theme-primary-foreground: 0 0% 98%;
+
+	--theme-secondary: 240 4.8% 95.9%;
+	--theme-secondary-foreground: 240 5.9% 10%;
+
+	--theme-muted: 240 4.8% 95.9%;
+	--theme-muted-foreground: 240 3.8% 46.1%;
+
+	--theme-accent: 240 4.8% 95.9%;
+	--theme-accent-foreground: 240 5.9% 10%;
+
+	--theme-destructive: 0 84.2% 60.2%;
+	--theme-destructive-foreground: 0 0% 98%;
+
+	--theme-border: 240 5.9% 90%;
+	--theme-input: 240 5.9% 90%;
+	--theme-ring: 240 5.9% 10%;
+}
+
+.dark {
+	--theme-background: 240 10% 3.9%;
+	--theme-foreground: 0 0% 98%;
+
+	--theme-card: 240 10% 3.9%;
+	--theme-card-foreground: 0 0% 98%;
+
+	--theme-popover: 240 10% 3.9%;
+	--theme-popover-foreground: 0 0% 98%;
+
+	--theme-primary: 0 0% 98%;
+	--theme-primary-foreground: 240 5.9% 10%;
+
+	--theme-secondary: 240 3.7% 15.9%;
+	--theme-secondary-foreground: 0 0% 98%;
+
+	--theme-muted: 240 3.7% 15.9%;
+	--theme-muted-foreground: 240 5% 64.9%;
+
+	--theme-accent: 240 3.7% 15.9%;
+	--theme-accent-foreground: 0 0% 98%;
+
+	--theme-destructive: 0 62.8% 30.6%;
+	--theme-destructive-foreground: 0 0% 98%;
+
+	--theme-border: 240 3.7% 15.9%;
+	--theme-input: 240 3.7% 15.9%;
+	--theme-ring: 240 4.9% 83.9%;
 }
