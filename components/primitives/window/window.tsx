@@ -176,12 +176,12 @@ export const Window = (props: WindowProps) => {
 interface CreateWindowProps extends Omit<WindowProps, 'zIndex'> {}
 
 export const createWindow = (props: CreateWindowProps) => {
-  const windowHistory = useWindowHistory()
+  const history = useWindowHistory()
 
   const determineZIndex = (window: ModuleKey) => {
-    const index = windowHistory.history.indexOf(window)
+    const index = history.indexOf(window)
 
-    return 20 + (index === -1 ? 0 : windowHistory.history.length - index)
+    return 20 + (index === -1 ? 0 : history.length - index)
   }
 
   return <Window {...props} style={{ zIndex: determineZIndex(props.value) }} />

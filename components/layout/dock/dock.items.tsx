@@ -23,17 +23,31 @@ export const DockItems = (props: DockItemsProps) => {
   const window = useWindowState()
 
   const dockItems = apps
-    .map((app) => {
+    .map((app, index) => {
       // docked items
       const dockItem = dock.find((item) => item.type === app.key)
       // not docked but open
       const isOpen = window.some((win) => win.type === app.key)
 
-      return dockItem?.dock || isOpen ? { ...app, ...dockItem } : null
+      return dockItem?.dock || isOpen
+        ? {
+            ...app,
+            ...dockItem,
+            order: dockItem?.dock?.order ?? index + apps.length,
+          }
+        : null
     })
     .filter(Boolean)
     // sort by order
-    .sort((a, b) => (a?.dock?.order ?? 0) - (b?.dock?.order ?? 0))
+    .sort((a, b) => {
+      if (a?.order && b?.order) {
+        return a.order - b.order
+      }
+
+      return 0
+    })
+
+  console.log(dockItems)
 
   return (
     <ToggleGroup

@@ -28,7 +28,7 @@ export const useWindowState = () => {
 export const useWindowHistory = () => {
   const [windowManager] = useAtom(windowManagerAtom)
 
-  return { history: windowManager.history }
+  return windowManager.history
 }
 
 const updateWindowHistory = (windowType: ModuleKey, windows: Window[]) => {
