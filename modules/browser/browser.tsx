@@ -52,7 +52,7 @@ export const App = (props: React.ComponentProps<'div'>) => {
 
   return (
     <div className={cn('flex flex-1 flex-col', className)} {...rest}>
-      <div className="flex items-center gap-2 border-b bg-accent p-2 pr-20">
+      <div className="flex items-center gap-2 border-b bg-background p-2 pr-20">
         <Button
           variant="ghost"
           size="icon"

@@ -7,9 +7,10 @@ import {
   TooltipTrigger,
 } from '@/components/primitives/tooltip'
 import { cn } from '@/lib/cn'
-import type { ModuleType } from '@/modules'
+import type { ModuleType } from '@/types/module'
 import { Button } from '../../primitives/button'
 import {
+  type WindowManagerState,
   openWindow,
   useWindowState,
 } from '../../ui/window-manager/window.store'
@@ -18,7 +19,7 @@ interface DockItemProps extends React.ComponentProps<'button'> {
   /**
    * The data to display
    */
-  app: ModuleType
+  app: ModuleType<keyof WindowManagerState>
 }
 
 export const DockItem = (props: DockItemProps) => {

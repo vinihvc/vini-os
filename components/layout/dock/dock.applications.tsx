@@ -6,26 +6,26 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/primitives/popover'
-import { openWindow } from '@/components/ui/window-manager/window.store'
-import { cn } from '@/lib/cn'
-import { PopoverClose } from '@radix-ui/react-popover'
 import {
-  Calculator,
-  Image,
-  KeyboardMusic,
-  LayoutGrid,
-  Mail,
-  Music,
-  NotepadText,
-  Settings,
-} from 'lucide-react'
+  type WindowManagerState,
+  openWindow,
+} from '@/components/ui/window-manager/window.store'
+import { cn } from '@/lib/cn'
+import type { ModuleType } from '@/types/module'
+import { PopoverClose } from '@radix-ui/react-popover'
+import { LayoutGrid } from 'lucide-react'
 import type React from 'react'
 import { DOCK_WIDTH } from './dock'
 
-interface ApplicationsProps extends React.ComponentProps<'div'> {}
+interface ApplicationsProps extends React.ComponentProps<'div'> {
+  /**
+   * The applications to display
+   */
+  apps: ModuleType<keyof WindowManagerState>[]
+}
 
 export const Applications = (props: ApplicationsProps) => {
-  const { className, ...rest } = props
+  const { apps, className, ...rest } = props
 
   return (
     <Popover>
@@ -53,94 +53,20 @@ export const Applications = (props: ApplicationsProps) => {
         <div className="font-semibold">Applications</div>
 
         <div className="mt-6 grid grid-cols-5 gap-4">
-          <PopoverClose asChild>
-            <Button
-              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-              size="icon"
-              variant="ghost"
-              onClick={() => openWindow('notepad')}
-            >
-              <NotepadText />
+          {apps.map((app) => (
+            <PopoverClose asChild key={app.key}>
+              <Button
+                className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
+                size="icon"
+                variant="ghost"
+                onClick={() => openWindow(app.key)}
+              >
+                {app.icon}
 
-              <span className="text-xs">Notepad</span>
-            </Button>
-          </PopoverClose>
-
-          <PopoverClose asChild>
-            <Button
-              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-              size="icon"
-              variant="ghost"
-            >
-              <Mail />
-
-              <span className="text-xs">Mail</span>
-            </Button>
-          </PopoverClose>
-
-          <PopoverClose asChild>
-            <Button
-              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-              size="icon"
-              variant="ghost"
-              onClick={() => openWindow('settings')}
-            >
-              <Settings />
-
-              <span className="text-xs">Settings</span>
-            </Button>
-          </PopoverClose>
-
-          <PopoverClose asChild>
-            <Button
-              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-              size="icon"
-              variant="ghost"
-              onClick={() => openWindow('calculator')}
-            >
-              <Calculator />
-
-              <span className="text-xs">Calculator</span>
-            </Button>
-          </PopoverClose>
-
-          <PopoverClose asChild>
-            <Button
-              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-              size="icon"
-              variant="ghost"
-              onClick={() => openWindow('player')}
-            >
-              <Music />
-
-              <span className="text-xs">Player</span>
-            </Button>
-          </PopoverClose>
-
-          <PopoverClose asChild>
-            <Button
-              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-              size="icon"
-              variant="ghost"
-              onClick={() => openWindow('photos')}
-            >
-              <Image />
-
-              <span className="text-xs">Photos</span>
-            </Button>
-          </PopoverClose>
-
-          <PopoverClose asChild>
-            <Button
-              className="h-20 w-full flex-col gap-4 font-medium [&>svg]:h-6 [&>svg]:w-6"
-              size="icon"
-              variant="ghost"
-            >
-              <KeyboardMusic />
-
-              <span className="text-xs">Piano</span>
-            </Button>
-          </PopoverClose>
+                <span className="text-xs">{app.label}</span>
+              </Button>
+            </PopoverClose>
+          ))}
         </div>
       </PopoverContent>
     </Popover>

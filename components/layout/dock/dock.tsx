@@ -27,7 +27,7 @@ export const Dock = async (props: DockProps) => {
         {...rest}
       >
         <div className="flex w-full items-center">
-          <Applications />
+          <Applications apps={modules} />
 
           <ToggleGroup
             type="multiple"

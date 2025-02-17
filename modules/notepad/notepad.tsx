@@ -18,7 +18,7 @@ export const App = (props: React.ComponentProps<'div'>) => {
         placeholder="Type something..."
       />
 
-      <div className="flex h-6 items-center border-t bg-accent px-1">
+      <div className="flex h-6 items-center border-t bg-background px-1">
         <span className="text-muted-foreground text-xs">
           {`${content.length} characters`}
         </span>

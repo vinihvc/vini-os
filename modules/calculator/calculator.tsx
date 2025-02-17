@@ -1,8 +1,10 @@
+'use client'
+
 import { Button } from '@/components/primitives/button'
 import { Divide, Dot, Equal, Minus, Plus, X } from 'lucide-react'
 import { useState } from 'react'
 
-export const Calculator = () => {
+export const App = () => {
   const [display, setDisplay] = useState('0')
   const [firstNumber, setFirstNumber] = useState<number | null>(null)
   const [operation, setOperation] = useState<string | null>(null)

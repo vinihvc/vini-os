@@ -21,7 +21,7 @@ export const WindowContent = (props: WindowContentProps) => {
 
   return (
     <Component className={cn('flex flex-1 flex-col', className)} {...rest}>
-      <div className="flex h-8 w-full items-center gap-2 border-b bg-accent px-2">
+      <div className="flex h-8 w-full items-center gap-2 border-b bg-background px-2">
         {actions}
       </div>
 

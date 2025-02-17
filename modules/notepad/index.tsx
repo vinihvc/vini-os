@@ -1,7 +1,8 @@
+import type { ModuleType } from '@/types/module'
 import { NotepadText } from 'lucide-react'
 import * as Notepad from './notepad'
 
-export default {
+const app: ModuleType<'notepad'> = {
   key: 'notepad',
   label: 'Notepad',
   version: '1.0.0',
@@ -9,4 +10,7 @@ export default {
   height: 366,
   icon: <NotepadText />,
   app: <Notepad.App />,
-} as const
+  dropdown: undefined,
+}
+
+export default app

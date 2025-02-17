@@ -1,8 +1,6 @@
 'use client'
 
-import { DropdownItem } from '@/components/primitives/dropdown'
 import { Tabs } from '@/components/primitives/tabs'
-import { Window } from '@/components/primitives/window'
 import type React from 'react'
 import { ExplorerContent } from './explorer.content'
 import { ExplorerSidebar } from './explorer.sidebar'
@@ -10,39 +8,25 @@ import { ExplorerDesktop } from './tabs/desktop'
 import { ExplorerDocuments } from './tabs/documents'
 import { ExplorerDownloads } from './tabs/downloads'
 
-const WINDOW_NAME = 'explorer'
-
-interface ExplorerWindowProps extends React.ComponentProps<'div'> {
-  zIndex: number
-}
-
-export const ExplorerWindow = (props: ExplorerWindowProps) => {
-  const { zIndex, children, ...rest } = props
+export const App = (props: React.ComponentProps<typeof Tabs>) => {
+  const { ...rest } = props
 
   return (
-    <Window
-      className="h-[600px] w-[800px]"
-      title="Explorer"
-      value={WINDOW_NAME}
-      zIndex={zIndex}
-      dropdown={<DropdownItem>New Folder</DropdownItem>}
+    <Tabs
+      className="flex flex-1"
+      orientation="vertical"
+      defaultValue="documents"
       {...rest}
     >
-      <Tabs
-        className="flex flex-1"
-        orientation="vertical"
-        defaultValue="documents"
-      >
-        <ExplorerSidebar />
+      <ExplorerSidebar />
 
-        <ExplorerContent>
-          <ExplorerDocuments />
+      <ExplorerContent>
+        <ExplorerDocuments />
 
-          <ExplorerDesktop />
+        <ExplorerDesktop />
 
-          <ExplorerDownloads />
-        </ExplorerContent>
-      </Tabs>
-    </Window>
+        <ExplorerDownloads />
+      </ExplorerContent>
+    </Tabs>
   )
 }
