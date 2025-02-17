@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import '@/styles/global.css'
 import { fontSans } from '@/lib/font'
 
+import { Brightness } from '@/components/layout/brightness'
 import { Dock } from '@/components/layout/dock'
 import { Wallpaper } from '@/components/layout/wallpaper'
 import { WindowManager } from '@/components/ui/window-manager'
@@ -27,6 +28,8 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
           <WindowManager />
 
           <Dock />
+
+          <Brightness />
         </Providers>
       </body>
     </html>

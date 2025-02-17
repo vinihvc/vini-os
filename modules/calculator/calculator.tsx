@@ -2,13 +2,13 @@
 
 import { Button } from '@/components/primitives/button'
 import { Divide, Dot, Equal, Minus, Plus, X } from 'lucide-react'
-import { useState } from 'react'
+import React from 'react'
 
 export const App = () => {
-  const [display, setDisplay] = useState('0')
-  const [firstNumber, setFirstNumber] = useState<number | null>(null)
-  const [operation, setOperation] = useState<string | null>(null)
-  const [newNumber, setNewNumber] = useState(true)
+  const [display, setDisplay] = React.useState('0')
+  const [firstNumber, setFirstNumber] = React.useState<number | null>(null)
+  const [operation, setOperation] = React.useState<string | null>(null)
+  const [newNumber, setNewNumber] = React.useState(true)
 
   const handleNumber = (num: string) => {
     if (newNumber) {
@@ -183,25 +183,3 @@ export const App = () => {
     </div>
   )
 }
-
-// const WINDOW_NAME = 'calculator'
-
-// interface CalculatorWindowProps extends React.ComponentProps<'div'> {
-//   zIndex: number
-// }
-
-// export const CalculatorWindow = (props: CalculatorWindowProps) => {
-//   const { zIndex, ...rest } = props
-
-//   return (
-//     <Window
-//       title="Calculator"
-//       className="h-[366px] min-w-[250px] max-w-[250px]"
-//       value={WINDOW_NAME}
-//       zIndex={zIndex}
-//       {...rest}
-//     >
-//       <Calculator />
-//     </Window>
-//   )
-// }

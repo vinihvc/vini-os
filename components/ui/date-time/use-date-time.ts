@@ -22,6 +22,7 @@ export const useDateTime = (formatDate?: '12h' | '24h') => {
   const year = getYear(date)
   const weekDay = format(date, 'EEE')
   const monthName = format(date, 'MMM')
+  const amPm = is12h ? format(date, 'a') : undefined
 
   // Time
   const hours = format(date, is12h ? 'hh' : 'HH')
@@ -35,5 +36,6 @@ export const useDateTime = (formatDate?: '12h' | '24h') => {
     monthName,
     hours,
     minutes,
+    amPm,
   }
 }

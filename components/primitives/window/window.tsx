@@ -2,18 +2,19 @@
 
 import { useClickOutside } from '@/hooks/use-click-outside'
 import { cn } from '@/lib/cn'
+import type { ModuleKey } from '@/modules'
 import { EllipsisVertical, Minus, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useDragControls } from 'motion/react'
 import React from 'react'
 import {
-  type WindowManagerState,
   closeWindow,
   focusWindow,
   minimizeWindow,
   unfocusWindow,
+  useWindowHistory,
   useWindowState,
-} from '../../ui/window-manager/window.store'
+} from '../../../store/window'
 import { Button } from '../button'
 import { Dropdown, DropdownContent, DropdownTrigger } from '../dropdown'
 
@@ -42,11 +43,7 @@ interface WindowProps extends React.ComponentProps<'div'> {
   /**
    * The value of the window
    */
-  value: keyof WindowManagerState
-  /**
-   * The z-index of the window
-   */
-  zIndex: number
+  value: ModuleKey
 }
 
 export const Window = (props: WindowProps) => {
@@ -57,7 +54,6 @@ export const Window = (props: WindowProps) => {
     value,
     className,
     children,
-    zIndex,
     ...rest
   } = props
 
@@ -67,11 +63,13 @@ export const Window = (props: WindowProps) => {
 
   const windowManager = useWindowState()
 
+  const findApp = windowManager.find((window) => window.type === value)
+
   useClickOutside($ref, () => unfocusWindow(value))
 
-  const isOpen = windowManager[value].isOpen
-  const isFocused = windowManager[value].isFocused
-  const isMinimized = windowManager[value].isMinimized
+  const isOpen = findApp?.isOpen
+  const isFocused = findApp?.isFocused
+  const isMinimized = findApp?.isMinimized
 
   return (
     <AnimatePresence>
@@ -98,7 +96,6 @@ export const Window = (props: WindowProps) => {
             className,
           )}
           style={{
-            zIndex,
             width: settings?.width,
             height: settings?.height,
             ...rest.style,
@@ -176,6 +173,16 @@ export const Window = (props: WindowProps) => {
   )
 }
 
-export const createWindow = (props: WindowProps) => {
-  return <Window {...props} />
+interface CreateWindowProps extends Omit<WindowProps, 'zIndex'> {}
+
+export const createWindow = (props: CreateWindowProps) => {
+  const windowHistory = useWindowHistory()
+
+  const determineZIndex = (window: ModuleKey) => {
+    const index = windowHistory.history.indexOf(window)
+
+    return 20 + (index === -1 ? 0 : windowHistory.history.length - index)
+  }
+
+  return <Window {...props} style={{ zIndex: determineZIndex(props.value) }} />
 }

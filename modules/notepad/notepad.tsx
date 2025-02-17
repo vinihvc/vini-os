@@ -2,12 +2,12 @@
 
 import { Textarea } from '@/components/primitives/textarea'
 import { cn } from '@/lib/cn'
-import { useState } from 'react'
+import React from 'react'
 
 export const App = (props: React.ComponentProps<'div'>) => {
   const { className, ...rest } = props
 
-  const [content, setContent] = useState('')
+  const [content, setContent] = React.useState('')
 
   return (
     <div className={cn('flex flex-1 flex-col', className)} {...rest}>

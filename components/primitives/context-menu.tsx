@@ -80,7 +80,7 @@ const ContextMenuContent = React.forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
-        'z-50 min-w-32',
+        'z-[9999] min-w-32',
         'p-0.5',
         'rounded-md border',
         'bg-background/90 backdrop-blur',

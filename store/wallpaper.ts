@@ -9,7 +9,7 @@ type WallpaperState = {
 
 const wallpaperAtom = atomWithStorage<WallpaperState>('wallpaper', {
   type: 'solid',
-  value: '#432DD7',
+  value: 'bg-blue-700',
 })
 
 export const useWallpaper = () => {

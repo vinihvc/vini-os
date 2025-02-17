@@ -19,6 +19,7 @@ export const CalendarMenu = () => {
         <Button
           variant="ghost"
           className="h-full gap-4 px-3 py-1 hover:bg-transparent data-[state=open]:bg-foreground/10"
+          onContextMenu={(e) => e.stopPropagation()}
         >
           <DateTime />
         </Button>

@@ -17,6 +17,7 @@ export const MoreMenu = () => {
           variant="ghost"
           size="icon"
           className="group h-8 w-8 hover:bg-transparent data-[state=open]:bg-foreground/10"
+          onContextMenu={(e) => e.stopPropagation()}
         >
           <ChevronUp className="transition group-data-[state=open]:rotate-180" />
         </Button>

@@ -1,6 +1,4 @@
 'use client'
-
-import { cn } from '@/lib/cn'
 import { useWallpaper } from '@/store/wallpaper'
 import Image from 'next/image'
 
@@ -10,8 +8,9 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from '@/components/primitives/context-menu'
-import { openWindow } from '@/components/ui/window-manager/window.store'
+import { cn } from '@/lib/cn'
 import { setSettingsTab } from '@/modules/settings/settings.store'
+import { openWindow } from '@/store/window'
 
 export const Wallpaper = () => {
   const wallpaper = useWallpaper()
@@ -25,8 +24,9 @@ export const Wallpaper = () => {
     <ContextMenu>
       <ContextMenuTrigger>
         <div
-          className="fixed inset-0"
-          style={{ backgroundColor: wallpaper.value }}
+          className={cn('fixed inset-0 select-none', {
+            [wallpaper.value]: wallpaper.type === 'solid',
+          })}
         >
           {wallpaper.type === 'image' && (
             <Image
@@ -36,10 +36,6 @@ export const Wallpaper = () => {
               quality={100}
               fill
             />
-          )}
-
-          {wallpaper.type === 'solid' && (
-            <div className={cn('fixed inset-0', wallpaper.value)} />
           )}
         </div>
       </ContextMenuTrigger>

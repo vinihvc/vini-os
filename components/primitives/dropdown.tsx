@@ -98,9 +98,11 @@ export const DropdownItem = React.forwardRef<
   <DropdownPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center',
-      'gap-2 rounded-sm px-2 py-1.5',
+      'relative flex items-center',
+      'gap-2 rounded-sm',
+      'px-2 py-1.5',
       'font-medium text-xs',
+      'cursor-default select-none',
       'focus:bg-primary focus:text-primary-foreground',
       'outline-none transition-colors',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
