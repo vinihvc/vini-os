@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import '@/styles/global.css'
 import { fontSans } from '@/lib/font'
 
+import { ReactScan } from '@/components/debug/react-scan'
 import { Brightness } from '@/components/layout/brightness'
 import { Dock } from '@/components/layout/dock'
 import { Wallpaper } from '@/components/layout/wallpaper'
@@ -30,6 +31,8 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
           <Dock />
 
           <Brightness />
+
+          <ReactScan />
         </Providers>
       </body>
     </html>
